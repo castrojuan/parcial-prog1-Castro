@@ -34,14 +34,13 @@ def valida_entero(entrada: str) -> int:
 
 
 def validar_cantidad_alumnos() ->int:
-
-    """
-        La funcion recibe un argumento y verifica que sea un numero entero, dentro del rango
+    """La funcion pide un numero y validando que sea numero entero a 
+       traves de la funcion valida_entero, y verifica que este dentro del rango
         permitido 1-30
        
         Return: 
         int: numero dentro del rango permitido
-        """
+    """
 
     valido = False
     cantidad = 0
@@ -60,13 +59,13 @@ def validar_cantidad_alumnos() ->int:
 
 
 
-def validar_nombre(nombre: str) -> bool:
+def validar_nombre(nombre:list[str]) -> bool:
     """
-    La funcion recibe un argumento y verifica que sea un nombre de al menos 5 caracteres, 
-    que contenga solo letras minusculas, mayusculas, o espacios
-           
-    Return: 
-    str: numero dentro del rango permitido
+        La funcion recibe un argumento y verifica que sea un nombre de al menos 5 caracteres, 
+        que contenga solo letras minusculas, mayusculas, o espacios
+
+        Argumento: list[str] para validar el nombre       
+        Return: booleano True si el nombre es valido
     """
     
     if len(nombre) < 5:
@@ -86,8 +85,14 @@ def validar_nombre(nombre: str) -> bool:
 
 
             
-def valida_nota(nota: int | float)-> bool:
+def valida_nota(nota: list[int])-> bool:
+    """
+        La funcion recibe un numero y valida que sea una nota valida entre el 0 y el 10
 
+        Argumento:list[int] nota a evaluar
+
+        Return: bool true si es valido
+    """    
     valido = False
 
     if nota >= 0 and nota <= 10:
@@ -98,8 +103,11 @@ def valida_nota(nota: int | float)-> bool:
 
 def verificar_carga_inicial(cantidad: int) -> bool:
     """
-    Verifica si la cantidad de alumnos es mayor a cero.
+    Verifica si la cantidad de alumnos/listas registrada es mayor a cero.
     Si es cero, le vuelve a pedir que ingrese una opcion.
+
+    Argumento: int para verificar el valor de cantidad
+    Return: bool False si cantidad = 0 y le pide que registre la lista primero
     """
     if cantidad == 0:
         print("\nPrimero debe registrar los alumnos. Ingrese 1 para el registro, o presione 0 para salir del menu ")
