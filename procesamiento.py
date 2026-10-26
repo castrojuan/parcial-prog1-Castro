@@ -309,8 +309,53 @@ def ordena_ascendente(nombre: list[str], promedio: list[float])->str:
 
 
 
+#Extra 
+#case 7:
+    if verificar_carga_inicial(cantidad):
+        busqueda = modificar_alumno(cantidad, nombre, nota1, nota2, promedio) 
+        print(busqueda)
+#
+#
+#def modificar_alumno(cantidad: int, nombre: list[str], nota1: list[int], nota2: list[int], promedio:list)->str:
 
+    valido = False
 
+    while not valido:
+
+        objetivo = input("Ingrese el nombre del alumno: ")
+    
+        for i in range(cantidad):
+            if nombre[i] == objetivo:
+                reporte = f"\nAlumno {nombre[i]}\nNota 1er parcial: {nota1[i]}\nNota 2do parcial: {nota2[i]}\nPromedio: {promedio[i]}"
+                valido = True
+                modificar_datos = input(f"modificar nombre del alumno {i + 1}: ")
+                while not validar_nombre(modificar_datos): 
+                    modificar_datos = input(f"Ingrese nombre del alumno {i + 1}: ")
+                nombre[i] = modificar_datos
+
+                nota1_modificar = valida_entero(f"corrija la nota del 1er parcial: ") 
+                while not valida_nota(nota1_modificar):
+                    print("Invalido. Ingrese una nota entre 0 y 10.")
+                    nota1_modificar = valida_entero(f"Ingrese la nota del 1er parcial: ")
+                nota1[i] = nota1_modificar
+                
+                
+                nota2_corregir = valida_entero(f"Corrija la nota del 2do parcial: ") 
+                while not valida_nota(nota2_corregir):
+                    print("Invalido, ingrese una nota entre 0 y 10.")
+                    nota2_corregir = valida_entero(f"Ingrese la nota del 2do parcial: ")
+                nota2[i] = nota2_corregir
+                
+                promedio[i] = calcular_promedio(nota1[i], nota2[i]) 
+
+                reporte = f"\nAlumno {nombre[i]}\nNota 1er parcial: {nota1[i]}\nNota 2do parcial: {nota2[i]}\nPromedio: {promedio[i]}"
+                break
+        
+            if not valido:
+                reporte = f"\nalumno {objetivo} no se encuentra en la lista"
+                valido = True # Aca deja de iterar porque quiero que salga. Si el usuario quiere seguir buscando, vuelve a apretar 5
+        
+    return reporte 
 
 
 
